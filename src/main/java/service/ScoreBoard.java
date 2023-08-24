@@ -1,5 +1,6 @@
 package service;
 
+import java.util.Optional;
 import java.util.Set;
 
 import javax.management.RuntimeErrorException;
@@ -31,6 +32,11 @@ public class ScoreBoard{
 	
 	public void startMatch(String localTeam, String visitorTeam) {
 		
+		//Before create a Match, check if any team are playing now
+		if(validateMatch(localTeam).isPresent() || validateMatch(visitorTeam).isPresent()) {
+			System.out.println("You cannot register a match with a team that is already playing a match currently");
+		}
+		
 		Match newMatch = new Match(localTeam, visitorTeam, 0);
 		matchesBoard.add(newMatch);
 		System.out.println("Match started: " + newMatch);
@@ -57,6 +63,13 @@ public class ScoreBoard{
 				.findFirst()
 				.orElseThrow(()-> new RuntimeException("No match found"));
 		
+	}
+	
+	private Optional<Match> validateMatch(final String team){
+		return matchesBoard.stream()
+				.filter(match -> match.getLocalTeam().equalsIgnoreCase(team) 
+						|| match.getVisitorTeam().equalsIgnoreCase(team))
+				.findFirst();
 	}
 	
 	
