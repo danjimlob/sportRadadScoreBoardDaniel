@@ -1,4 +1,4 @@
-package test;
+package service;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,8 +6,6 @@ import java.io.ByteArrayOutputStream;
 
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
-
-import service.ScoreBoard;
 
 class ScoreBoardTest {
 	private ScoreBoard scoreBoard;
@@ -52,11 +50,24 @@ class ScoreBoardTest {
 		int localScore = 0;
 		int visitorScore = 0;
 		
-		scoreBoard.updateMatches(localTeam, localScore, visitorTeam, visitorScore);
+		scoreBoard.updateMatch(localTeam, localScore, visitorTeam, visitorScore);
 		
 		assertEquals("Match updated: " + localTeam, "0 -" + visitorTeam +" 0", outContent.toString());
 
 	 }
+	
+	//Test update with negative Score
+	@Test
+	void updateMatchWithNegativeScore() {
+		
+	}
+	
+	
+	//Test update with a no playing team
+	@Test
+	void updateMatchWithNoValidTeam() {
+		
+	}
 	
 	//Finish a Match
 	@Test

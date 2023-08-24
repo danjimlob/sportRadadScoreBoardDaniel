@@ -27,23 +27,21 @@ public class ScoreBoard{
 		return scoreBoard;
 	}
 	
-	
-	
-	
 	public void startMatch(String localTeam, String visitorTeam) {
 		
 		//Before create a Match, check if any team are playing now
 		if(validateMatch(localTeam).isPresent() || validateMatch(visitorTeam).isPresent()) {
 			System.out.println("You cannot register a match with a team that is already playing a match currently");
+			return;
 		}
 		
-		Match newMatch = new Match(localTeam, visitorTeam, 0);
+		Match newMatch = new Match(localTeam, visitorTeam, Order++);
 		matchesBoard.add(newMatch);
 		System.out.println("Match started: " + newMatch);
 		
 	}
 	
-	public void updateMatches(String localTeam, int localScore, String visitorTeam, int visitorScore) {
+	public void updateMatch(String localTeam, int localScore, String visitorTeam, int visitorScore) {
 		
 		// First we need search the match
 		Match executingMatch = findMatch(localTeam);
