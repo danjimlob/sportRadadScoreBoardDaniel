@@ -57,4 +57,19 @@ class ScoreBoardTest {
 		assertEquals("Match updated: " + localTeam, "0 -" + visitorTeam +" 0", outContent.toString());
 
 	 }
+	
+	//Finish a Match
+	@Test
+	void finishMatch() {
+		String localTeam = "localTeam";
+		String visitorTeam = "visitorTeam";
+		
+		scoreBoard.startMatch(localTeam, visitorTeam);
+		
+		scoreBoard.finishMatch(localTeam);
+		
+		assertEquals("Match finished: " + localTeam, "0 -" + visitorTeam +" 0", outContent.toString());
+
+		
+	}
 }

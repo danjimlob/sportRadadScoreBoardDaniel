@@ -51,9 +51,14 @@ public class ScoreBoard{
 		executingMatch.setVisitorScore(visitorScore);
 		
 		System.out.println("Match updated: " + executingMatch);
+	
 		
-		
-		
+	}
+	
+	public void finishMatch(String localTeam) {
+		Match matchToRemove = findMatch(localTeam);
+		matchesBoard.remove(matchToRemove);
+		System.out.println("Match finished " + matchToRemove);
 		
 	}
 	
