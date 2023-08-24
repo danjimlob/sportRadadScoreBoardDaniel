@@ -24,6 +24,46 @@ public class Match {
 
 
 	
+	public String getLocalTeam() {
+		return localTeam;
+	}
+
+
+	public void setLocalTeam(String localTeam) {
+		this.localTeam = localTeam;
+	}
+
+
+	public int getLocalScore() {
+		return localScore;
+	}
+
+
+	public void setLocalScore(int localScore) {
+		this.localScore = localScore;
+	}
+
+
+	public String getVisitorTeam() {
+		return visitorTeam;
+	}
+
+
+	public void setVisitorTeam(String visitorTeam) {
+		this.visitorTeam = visitorTeam;
+	}
+
+
+	public int getVisitorScore() {
+		return visitorScore;
+	}
+
+
+	public void setVisitorScore(int visitorScore) {
+		this.visitorScore = visitorScore;
+	}
+
+
 	public int getOrder() {
 		return order;
 	}
