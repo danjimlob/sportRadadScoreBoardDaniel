@@ -15,7 +15,7 @@ public class ScoreBoard implements IScoreBoard {
 
 	private static Set<Match> matchesBoard;
 
-	private ScoreBoard() {
+	public ScoreBoard() {
 		matchesBoard = new HashSet<>();
 	}
 
