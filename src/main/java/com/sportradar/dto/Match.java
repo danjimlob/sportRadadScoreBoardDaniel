@@ -1,6 +1,6 @@
 package com.sportradar.dto;
 
-public class Match {
+public class Match implements Comparable<Match> {
 
 	private String localTeam;
 	private int localScore = 0;
@@ -16,13 +16,34 @@ public class Match {
 		this.setOrder(order);
 	}
 	
-	
-	public String formatMessage() {
+	/**
+	 * Format message with match information
+	 * @return
+	 */
+	@Override
+	public String toString() {
 		return localTeam + " " + localScore + " - " + visitorTeam + " " + visitorScore;
 		
 	}
+	
 
-
+	/**
+	 * 
+	 * @return
+	 */
+	@Override
+	public int compareTo(Match match) {
+		if(this.localScore + this.visitorScore == match.getLocalScore() + match.getVisitorScore()) {
+			if(this.order > match.getOrder()) {
+				return -1;
+			}
+			return 1;
+		} else if (this.localScore + this.visitorScore > match.getLocalScore() + match.getVisitorScore()) {
+			return -1;
+		}
+		return 1;
+				
+	}
 	
 	public String getLocalTeam() {
 		return localTeam;
