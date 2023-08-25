@@ -13,9 +13,7 @@ public class ScoreBoard implements IScoreBoard {
 	// initial order to match set
 	private static int Order = 0;
 
-
 	private static Set<Match> matchesBoard;
-
 
 	private ScoreBoard() {
 		matchesBoard = new HashSet<>();
@@ -37,12 +35,12 @@ public class ScoreBoard implements IScoreBoard {
 	public void startMatch(String localTeam, String visitorTeam) {
 
 		// Before create a Match, check if any team are playing now
-		
-			if (matchesBoard != null && (Utilities.validateMatch(localTeam,matchesBoard).isPresent() || Utilities.validateMatch(visitorTeam,matchesBoard).isPresent())) {
-				System.out.println(Utilities.ERROR_VALIDATE_MATCH_EXISTING);
-				return;
-			}
-		
+
+		if (matchesBoard != null && (Utilities.validateMatch(localTeam, matchesBoard).isPresent()
+				|| Utilities.validateMatch(visitorTeam, matchesBoard).isPresent())) {
+			System.out.println(Utilities.ERROR_VALIDATE_MATCH_EXISTING);
+			return;
+		}
 
 		Match newMatch = new Match(localTeam, visitorTeam, Order++);
 		matchesBoard.add(newMatch);
