@@ -1,4 +1,4 @@
-package dto;
+package com.sportradar.dto;
 
 public class Match {
 

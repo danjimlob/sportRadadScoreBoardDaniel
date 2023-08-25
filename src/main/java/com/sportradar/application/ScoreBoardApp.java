@@ -1,4 +1,4 @@
-package application;
+package com.sportradar.application;
 
 public class ScoreBoardApp {
 	

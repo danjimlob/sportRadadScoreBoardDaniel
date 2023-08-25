@@ -1,11 +1,10 @@
-package service;
+package com.sportradar.service;
 
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
-import javax.management.RuntimeErrorException;
-
-import dto.Match;
+import com.sportradar.dto.Match;
 
 public class ScoreBoard{
 	
@@ -16,7 +15,7 @@ public class ScoreBoard{
 	private static Set<Match> matchesBoard;
 	
 	private ScoreBoard() {
-		
+		matchesBoard = new HashSet<>();
 	}
 	
 	//Singlenton Instance ScoreBoard
@@ -27,17 +26,20 @@ public class ScoreBoard{
 		return scoreBoard;
 	}
 	
+	public static void resetScoreBoard() {
+		matchesBoard.clear();
+	}
 	public void startMatch(String localTeam, String visitorTeam) {
 		
 		//Before create a Match, check if any team are playing now
-		if(validateMatch(localTeam).isPresent() || validateMatch(visitorTeam).isPresent()) {
+		if(matchesBoard != null && (validateMatch(localTeam).isPresent() || validateMatch(visitorTeam).isPresent())) {
 			System.out.println("You cannot register a match with a team that is already playing a match currently");
 			return;
 		}
 		
 		Match newMatch = new Match(localTeam, visitorTeam, Order++);
 		matchesBoard.add(newMatch);
-		System.out.println("Match started: " + newMatch);
+		System.out.println("Match started: " + newMatch.formatMessage());
 		
 	}
 	
@@ -48,7 +50,7 @@ public class ScoreBoard{
 		executingMatch.setLocalScore(localScore);
 		executingMatch.setVisitorScore(visitorScore);
 		
-		System.out.println("Match updated: " + executingMatch);
+		System.out.println("Match updated: " + executingMatch.formatMessage());
 	
 		
 	}
@@ -56,7 +58,7 @@ public class ScoreBoard{
 	public void finishMatch(String localTeam) {
 		Match matchToRemove = findMatch(localTeam);
 		matchesBoard.remove(matchToRemove);
-		System.out.println("Match finished " + matchToRemove);
+		System.out.println("Match finished " + matchToRemove.formatMessage());
 		
 	}
 	
