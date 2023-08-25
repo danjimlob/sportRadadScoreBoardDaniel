@@ -7,6 +7,6 @@ A set of tests has been carried out to validate its correct operation.
 
 A small application "ScoreBoardApp" has been made to simulate a simple use of the library getting the following result:
 
-![Use Example](/useExample/sample-usage-test-case.png)
+![Use Example](/useExample/ExampleScoreBoard.png)
 
 
