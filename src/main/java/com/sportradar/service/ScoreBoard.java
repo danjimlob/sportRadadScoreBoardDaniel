@@ -10,7 +10,7 @@ public class ScoreBoard {
 
 	private static ScoreBoard scoreBoard;
 	// initial order to match set
-	private static int Order = 1;
+	private static int Order = 0;
 
 	private static int ZERO = 0;
 
